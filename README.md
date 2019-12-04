@@ -11,7 +11,6 @@ Additionally, I drew inspiration from some of the great project templates in oth
 $ git clone https://github.com/crlane/aocpp.git
 $ cd aocpp
 $ make
-$ ./bin/advent --help
 ```
 
 ### Usage
@@ -32,7 +31,9 @@ Puzzle input is read from stdin and passed to your solution's `Solve` method.
 
 ```bash
 $ ./bin/advent run 1 < /path/to/helloworld.txt
-"Hello, World!"
+Registering solution class for day 1
+Called solve for day 1!
+Input line:Hello, World!
 $
 ```
 
@@ -42,6 +43,12 @@ Sometimes, the AoC puzzles use a random seed or key in addition to the (usually 
 
 ```bash
 $ ./bin/advent run 1 puzzle_seed < /path/to/day1input.txt
+Registering solution class for day 1
+Called solve for day 1!
+Arg: foo
+Arg: bar
+Arg: baz
+Input line:Hello, World!
 ```
 
 ## Design
@@ -81,3 +88,4 @@ I've vendored several header only dependencies in the include directory that are
 [cxxopts]: https://github.com/jarro2783/cxxopts
 [StackOverflow Post]: https://stackoverflow.com/questions/1260954/how-can-i-keep-track-of-enumerate-all-classes-that-implement-an-interface
 [Awesome Advent of Code]: https://github.com/Bogdanp/awesome-advent-of-code#project-templates
+[Mustache]: https://github.com/kainjow/Mustache

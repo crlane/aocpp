@@ -52,15 +52,10 @@ int main(int argc, char* argv[]) {
 
        if (opts.count("args")) {
            args = opts["args"].as<vector<string>>();
-           for (auto v: args) {
-                cout << v << ", ";
-           }
-           cout << endl;
        }
        auto action = cmd == "run" ? Actions::RUN : Actions::NEW;
        switch(action) {
            case Actions::RUN: {
-               cout << "Running " << "day " << day << " with input: " << endl;
                try {
                    auto solution = advent::SolutionFactory::Create(day);
                    solution->Solve(cin, args);
