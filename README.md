@@ -1,5 +1,7 @@
 # AOCPP
 
+_ NOTE: THIS IS A WORK IN PROGRESS _
+
 This is my attempt at a standardized way of solving [Advent of Code][] problems with C++. It's opinionated about the way things should be structured. I created it because I wanted to be able to do AoC problems faster and I also wanted to get better at C++.
 
 Additionally, I drew inspiration from some of the great project templates in other languages shown in [Awesome Advent of Code][] repository.
@@ -42,7 +44,7 @@ $
 Sometimes, the AoC puzzles use a random seed or key in addition to the (usually much longer) puzzle input. You can pass any such keys as arguments after the day number.
 
 ```bash
-$ ./bin/advent run 1 puzzle_seed < /path/to/day1input.txt
+$ ./bin/advent run 1 foo bar baz < /path/to/day1input.txt
 Registering solution class for day 1
 Called solve for day 1!
 Arg: foo
