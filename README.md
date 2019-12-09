@@ -70,7 +70,14 @@ class ISolution {
 ### Automatic Registration
 
 Once your class file is generated, it'll automatically be included in the advent binary on the next build. This is because I use a static factory class to handle dynamic registration. I based much of it [this excellent blogpost](registration blog post).
+
+### Command Line Options
+
+I use [cxxopts][], an excellent header-only C++ library for parsing command line options. Right now
+
 ### Logging
+
+*TODO* THIS IS NOT ACTUALLY IMPLEMENTED YET
 
 This program uses [Plog] to implement a simple logging interface for your solutions. A logger instance will be created for your solution at object creation. To use it, simply `LOG << "your message"` or `LOGDEBUG << "foo"`. This allows you to use in a very similar manner to `std::cout`.
 
@@ -84,6 +91,19 @@ I've vendored several header only dependencies in the include directory that are
 - cli options with [cxxopts][]
 - logging with [Plog][]
 - Templating [Mustache][]
+
+## Caveats
+
+Works on Ubuntu 18.04 with and g++ 7.4.0.
+
+## TODO
+
+- [X] Create and compile auto registering classes for new days.
+- [] Common Logging
+- [] Makefile improvements (don't rebuild everything)
+- [] CMake?
+- [] More command line options?
+- [] Testing?
 
 [Advent of Code]: https://https://adventofcode.com/
 [Plog]: https://github.com/SergiusTheBest/plog

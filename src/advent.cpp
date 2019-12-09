@@ -8,15 +8,10 @@ using namespace std;
 using namespace kainjow::mustache;
 
 
-#define USAGE "./advent (run|new) DAY [args...]"
 enum class Actions {
     RUN,
     NEW,
 };
-
-void usage() {
-    cout << USAGE << endl;
-}
 
 
 struct DayCreator {
@@ -35,17 +30,26 @@ struct DayCreator {
 };
 
 int main(int argc, char* argv[]) {
-   cxxopts::Options options("options", "Run c++ advent of code problems");
+   cxxopts::Options options("advent", "Run c++ advent of code problems");
+   options
+     .positional_help("(run|new) day [args...]");
 
 
    try {
+       options.add_options("required")
+           ("cmd", "Command to run, one of `run` or `new`. Required.", cxxopts::value<string>())
+           ("day", "Day, should be number in [1, 25]. Required.", cxxopts::value<int>())
+           ("args", "additional arguments for your puzzle. Optional", cxxopts::value<vector<string>>());
        options.add_options()
-           ("cmd", "Command to run, one of `run` or `new`", cxxopts::value<string>())
-           ("day", "Day, should be number in [1, 25]", cxxopts::value<int>())
-           ("args", "Additional arguments for your puzzle", cxxopts::value<vector<string>>())
-           ;
+           ("h,help", "Print this message")
+           ("v,verbose", "Enable debug logging");
        options.parse_positional({"cmd", "day", "args"});
        auto opts = options.parse(argc, argv);
+       if (opts.count("h")) {
+           std::cout << options.help({""}) << std::endl;
+           exit(0);
+       }
+
        auto cmd = opts["cmd"].as<string>();
        auto day = opts["day"].as<int>();
        vector<string> args;
@@ -53,6 +57,8 @@ int main(int argc, char* argv[]) {
        if (opts.count("args")) {
            args = opts["args"].as<vector<string>>();
        }
+
+
        auto action = cmd == "run" ? Actions::RUN : Actions::NEW;
        switch(action) {
            case Actions::RUN: {
