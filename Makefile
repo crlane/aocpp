@@ -27,9 +27,9 @@ $(OBJ_DIR)/SolutionFactory.o: $(SRC_DIR)/SolutionFactory.cpp
 	$(CXX) -c $^ $(CPPFLAGS) $(ASAN_FLAGS) $(LDFLAGS) $(ASAN_LIBS) -o $@
 
 
-$(OBJ_DIR)/%.o: $(SRC_FILES)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	@echo "Building $@"
-	$(CXX) -c $(filter $(SRC_DIR)/$*.cpp, $(DAY_SRC_FILES)) $(CPPFLAGS) $< $(ASAN_FLAGS) $(LDFLAGS) $(ASAN_LIBS) -o $@
+	$(CXX) -c $< $(CPPFLAGS) $(ASAN_FLAGS) $(LDFLAGS) $(ASAN_LIBS) -o $@
 
 all: $(DAY_OBJ_FILES) $(BIN_DIR)/advent
 
